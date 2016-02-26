@@ -9,7 +9,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='wetransferpy',
-    version='0.1',
+    version='0.1.1',
     description='WeTransfer',
     long_description=long_description,
     url='https://github.com/creemerica/wetransfer-upload',
