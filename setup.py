@@ -14,6 +14,7 @@ setup(
     long_description=long_description,
     url='https://github.com/creemerica/wetransfer-upload',
     author='Sylvain Maziere, Paul Delannoy',
+    author_email='sylvain@predat.fr, paul@highwaytv.com',
     license='MIT',
     classifiers=[
         'Development Status :: 3 - Alpha',
@@ -21,12 +22,8 @@ setup(
         'Topic :: Software Development :: Build Tools',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.2',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
     ],
-    keywords=['wetransfer', 'upload','download'],
+    keywords="wetransfer upload download authenticate",
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
     install_requires=[
         "requests",

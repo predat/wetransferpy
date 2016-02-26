@@ -27,7 +27,8 @@ Usage
 
 Authenticate upload:
 
-.. code:: python
+.. code-block:: python
+
      from wetransferpy import WeTransfer
 
      wt = WeTransfer(username="name@example.com",
@@ -41,9 +42,11 @@ Authenticate upload:
      )
      wt.uploadFile('thefile.mov')
 
-Anonimous upload:
 
-.. code::python
+Anonymous upload:
+
+.. code-block:: python
+
      from wetransferpy import WeTransfer
      wt = Wetransfer()
      url = wt.uploadFile('thefile.mov')
