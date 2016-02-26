@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import division
 import sys
 import os
 import json
@@ -8,7 +9,6 @@ import mimetypes
 import collections
 from urlparse import urlparse, parse_qs
 from StringIO import StringIO
-
 import requests
 from requests_toolbelt import MultipartEncoder, MultipartEncoderMonitor
 from lxml import etree
@@ -45,8 +45,6 @@ class WeTransfer(object):
         if self.username and password:
             self._get_authenticity_token()
             self.login()
-
-        self.transfer_id = self._get_transfer_id()
 
     def _get_authenticity_token(self):
         resp = self.session.get("https://www.wetransfer.com/signin")
@@ -132,7 +130,7 @@ class WeTransfer(object):
 
     def _create_callback(self, previousChunks, fileSize):
         def callback(monitor):
-            self._draw_progress(
+            self._draw_progressbar(
                 float(previousChunks + monitor.bytes_read)/float(fileSize))
         return callback
 
@@ -185,6 +183,8 @@ class WeTransfer(object):
             yield data
 
     def uploadFile(self, fileToUpload):
+        self.transfer_id = self._get_transfer_id()
+
         with open(fileToUpload, 'rb') as f:
             fileMimeType = "application/octet-stream"
             fileSize = os.path.getsize(fileToUpload)
@@ -230,11 +230,11 @@ class WeTransfer(object):
     def download(self, url):
 	url = self._extract_url_redirection(url)
         [file_id, recipient_id, security_hash] = self._extract_params(url)
-        url = "https://www.wetransfer.com/api/v1/transfers/{0}/download?recipient_id={1}&security_hash={2}&password=&ie=false".format(file_id, recipient_id, security_hash)
+        url = "https://www.wetransfer.com/api/v1/transfers/{0}/"\
+            "download?recipient_id={1}&security_hash={2}&password=&ie=false"\
+            .format(file_id, recipient_id, security_hash)
         r = requests.get(url)
         download_data = json.loads(r.content)
-
-        print download_data
 
         print "Downloading {0}...".format(url)
         if 'direct_link' in download_data:
@@ -251,19 +251,17 @@ class WeTransfer(object):
                 stream=True
                 )
         file_size = int(r.headers["Content-Length"])
-        output_file = open(file_name, 'wb')
-        counter = 0
-        for chunk in r.iter_content(chunk_size=CHUNK_SIZE_D):
-            if chunk:
-                output_file.write(chunk)
-                output_file.flush()
-                sys.stdout.write(
-                    '\r{0}% {1}/{2}'.format((counter * CHUNK_SIZE_D) * 100/file_size,counter * CHUNK_SIZE_D,file_size))
-                counter += 1
-
-        sys.stdout.write('\r100% {0}/{1}\n'.format(file_size, file_size))
-        output_file.close()
-        print "Finished! {0}".format(file_name)
+        with open(file_name, 'wb') as output_file:
+            counter = 0
+            for chunk in r.iter_content(chunk_size=CHUNK_SIZE_D):
+                if chunk:
+                    output_file.write(chunk)
+                    output_file.flush()
+                    if self.progress:
+                        self._draw_progressbar((counter * CHUNK_SIZE_D) * 1.0/file_size)
+                    counter += 1
+        # sys.stdout.write('\r100% {0}/{1}\n'.format(file_size, file_size))
+        print "\nFinished! {0}\n".format(file_name)
 
     def _extract_params(self, url):
         """
