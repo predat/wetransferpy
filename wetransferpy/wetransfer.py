@@ -209,6 +209,7 @@ class WeTransfer(object):
 
                 self._finalize_chunks(
                     dataFileObjectId["file_object_id"], chunkNumber - 1)
+        print '\n'
         return self._finalize_transfer()
 
     def uploadDir(self, top, recursive=False):
