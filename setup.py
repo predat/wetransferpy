@@ -7,10 +7,12 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
+version = '0.1.6'
+
 setup(
     name='wetransferpy',
-    version='0.1.5',
-    description='WeTransfer',
+    version=version,
+    description='WeTransfer command line utility.',
     long_description=long_description,
     url='https://github.com/creemerica/wetransfer-upload',
     author='Sylvain Maziere, Paul Delannoy',
@@ -24,6 +26,8 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
     keywords="wetransfer upload download authenticate",
+    url='http://github.com/predat/wetransferpy',
+    download_url='https://github.com/predat/wetransferpy/tarball/' + version,
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
     install_requires=[
         "requests",
