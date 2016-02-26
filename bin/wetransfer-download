@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import sys
+from wetransferpy import WeTransfer
+
+if __name__ == "__main__":
+
+    url = sys.argv[1]
+
+    w = WeTransfer()
+    w.download(url)

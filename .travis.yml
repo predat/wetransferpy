@@ -1,0 +1,15 @@
+language: python
+
+python:
+  - "2.7"
+
+script:
+  - touch foo
+
+deploy:
+  provider: pypi
+  user: predat
+  password:
+  on:
+    branch: master
+    tags: true
