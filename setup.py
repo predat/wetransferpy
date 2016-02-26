@@ -14,7 +14,6 @@ setup(
     version=version,
     description='WeTransfer command line utility.',
     long_description=long_description,
-    url='https://github.com/creemerica/wetransfer-upload',
     author='Sylvain Maziere, Paul Delannoy',
     author_email='sylvain@predat.fr, paul@highwaytv.com',
     license='MIT',
