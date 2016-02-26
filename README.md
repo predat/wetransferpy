@@ -1,34 +1,30 @@
-wetransferpy
-============
+# wetransferpy
 
 |PyPI version| |PyPI license|
 
 Python script for uploading and downloading wetransfer files from the command line.
-Inspired by `upload-wetransfer <https://github.com/kraynel/upload-wetransfer>`__ by
-`kraynel <https://github.com/kraynel>`__ and `wetransfer-upload <https://github.com/creemerica/wetransfer-upload>`__
-by `Spencer Cree <https://github.com/creemerica>`.
+Inspired by upload-wetransfer https://github.com/kraynel/upload-wetransfer by
+kraynel https://github.com/kraynel and wetransfer-upload https://github.com/creemerica/wetransfer-upload by Spencer Cree https://github.com/creemerica.
 
-Features
-========
+## Features
+
 - Upload files or directories of files with or without authentication
 - Download file from url
 - Show progress of upload and download
 
-Installation
-============
-``$ pip install wetransferpy``
+## Installation
+
+`$ pip install wetransferpy`
 
 or
 
-``$ git clone https://github.com/predat/wetransferpy``
+`$ git clone https://github.com/predat/wetransferpy`
 
-Usage
-=====
+## Usage
 
 Authenticate upload:
 
-.. code-block:: python
-
+```python
      from wetransferpy import WeTransfer
 
      wt = WeTransfer(username="name@example.com",
@@ -41,14 +37,13 @@ Authenticate upload:
                     progress=True,
      )
      wt.uploadFile('thefile.mov')
-
+```
 
 Anonymous upload:
 
-.. code-block:: python
-
+```python
      from wetransferpy import WeTransfer
      wt = Wetransfer()
      url = wt.uploadFile('thefile.mov')
      print url
-
+```
