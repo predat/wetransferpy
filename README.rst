@@ -67,7 +67,7 @@ Anonymous upload:
     print url
 
 
-Uppload Shell script usage:
+Upload Shell script usage:
 
 .. code-block:: bash
 
@@ -102,6 +102,8 @@ Uppload Shell script usage:
 	                        message to send
 	  -R, --recursive       recursive send
 
+
+Download shell script usage:
 
 .. code-block:: bash
 
