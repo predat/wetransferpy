@@ -1,15 +1,14 @@
 language: python
-
 python:
-  - "2.7"
-
+- '2.7'
 script:
-  - touch foo
-
+- touch foo
 deploy:
   provider: pypi
   user: predat
-  password:
+  password: 
   on:
     branch: master
     tags: true
+dd:
+  secure: FsXQqHbFc8Zr8+nwbzxhzOUDlr0URQAUQ5OSC3Dv0s+MKbi0enJH9VtLcS1KNCXG7+HXr3x3AGMKyfaWfVixAVxZSdAFClqzAgB2HH6GCXEOnkUGCx4/a4N0lsbBsGeHmvnX2abMELzNdVSDT7nlTC6oCR9WixVYS1le9E7v59pV+fPh9MyKDlmLuAFrc8MoBgzJLkxMlJGObc9Ps1cmthlOzNB0DP2M0bgFcqG+QnO1vem548Y96CTnzGhNJt8+6uo0SLrXPQkFOWdrQNMMC0JYMG2AnD+mwvp7s1opyLeKEmafOABpjXeBZlTiu2tLMD5dOyTPnC0gsbUcYcLDrAAj96plVQ4UYyVq/8rbA4oXYJXUaV8esFRf5HwzINv7aTI+wzPP84EO42FV/MFE+iwlTZPnDEonQcYYl+9+/yQ0gNugNXk06z0m08N6gGdax/4TFp5VHGy1TBLoppCTkXNcAVpMFJil6stoD3LBU+C5KUSKuLmysH8qrwuGJ5J/mwCm9QNfONaxkLOyj8MyqP735oxo8qx6Q7a2LcX0FYSXmPLZBA8ucDO5IMxoadjkfBvVeCr3w0Hzc6mgITicPAje28htNiySLp921wx00MD7noqfsF6WY5VBk48nFNYnUX9fFzNM8scepJqCFi60yDp3qwCl2aKM7TvYYKS6pqo=
