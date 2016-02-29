@@ -39,7 +39,7 @@ if __name__ == "__main__":
                    password = args.password,
                    channel = args.channel,
                    expire_in = args.expire,
-                   progressbar = args.no_progressbar)
+                   progress = args.no_progressbar)
 
     try:
         for it in args.files:
