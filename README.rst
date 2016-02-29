@@ -73,40 +73,40 @@ Upload Shell script usage:
 
     wetranfer-upload -h
 
- 	usage: wetransfer-upload [-h] [-b] [-u USERNAME] [-p PASSWORD] [-e EXPIRE]
+    usage: wetransfer-upload [-h] [-b] [-u USERNAME] [-p PASSWORD] [-e EXPIRE]
                          [-c CHANNEL] [-r [RECEIVER [RECEIVER ...]]]
                          [-s SENDER] [-m MESSAGE] [-R]
                          files [files ...]
 
-	Uploads files or folders to WeTransfer.
+    Uploads files or folders to WeTransfer.
 
-	positional arguments:
-	  files                 files or directory to send
+    positional arguments:
+      files                 files or directory to send
 
-	optional arguments:
-	  -h, --help            show this help message and exit
-	  -b, --no-progressbar  Hide progress bar
-	  -u USERNAME, --username USERNAME
-	                        WeTransfer user account name
-	  -p PASSWORD, --password PASSWORD
-	                        WeTransfer password
-	  -e EXPIRE, --expire EXPIRE
-	                        File expiration
-	  -c CHANNEL, --channel CHANNEL
-	                        WeTransfer channel
-	  -r [RECEIVER [RECEIVER ...]], --receiver [RECEIVER [RECEIVER ...]]
-	                        emails of the receivers
-	  -s SENDER, --sender SENDER
-	                        email of the sender
-	  -m MESSAGE, --message MESSAGE
-	                        message to send
-	  -R, --recursive       recursive send
+    optional arguments:
+      -h, --help            show this help message and exit
+      -b, --no-progressbar  Hide progress bar
+      -u USERNAME, --username USERNAME
+                            WeTransfer user account name
+      -p PASSWORD, --password PASSWORD
+                            WeTransfer password
+      -e EXPIRE, --expire EXPIRE
+                            File expiration
+      -c CHANNEL, --channel CHANNEL
+                            WeTransfer channel
+      -r [RECEIVER [RECEIVER ...]], --receiver [RECEIVER [RECEIVER ...]]
+                            emails of the receivers
+      -s SENDER, --sender SENDER
+                            email of the sender
+      -m MESSAGE, --message MESSAGE
+                            message to send
+      -R, --recursive       recursive send
 
 
 Download shell script usage:
 
 .. code-block:: bash
 
- 	wetranfer-download http://we.tl/XV4MmuqPRd
+    wetranfer-download -u http://we.tl/XV4MmuqPRd
 
 
