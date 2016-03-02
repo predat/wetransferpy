@@ -228,7 +228,7 @@ class WeTransfer(object):
                     os.path.join(root, name)))
                 self.uploadFile(os.path.abspath(os.path.join(root, name)))
 
-    def download(self, url):
+    def download(self, url, destination=None):
 	url = self._extract_url_redirection(url)
         [file_id, recipient_id, security_hash] = self._extract_params(url)
         url = "https://www.wetransfer.com/api/v1/transfers/{0}/"\
@@ -252,6 +252,11 @@ class WeTransfer(object):
                 stream=True
                 )
         file_size = int(r.headers["Content-Length"])
+
+        if destination:
+            if os.path.isdir(destination):
+                file_name = os.path.join(destination, file_name)
+
         with open(file_name, 'wb') as output_file:
             counter = 0
             for chunk in r.iter_content(chunk_size=CHUNK_SIZE_D):

@@ -45,7 +45,8 @@ if __name__ == "__main__":
         for it in args.files:
             if os.path.isfile(it):
                 print("Upload file : " + it)
-                w.uploadFile(it)
+                url = w.uploadFile(it)
+                print 'Download url: {0}\n'.format(url)
             elif os.path.isdir(it):
                 w.uploadDir(it)
             else:
