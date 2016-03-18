@@ -8,11 +8,11 @@ import json
 import collections
 import logging
 import time
+import re
 from urlparse import urlparse, parse_qs
 from StringIO import StringIO
 import requests
 from requests_toolbelt import MultipartEncoder, MultipartEncoderMonitor
-from lxml import etree
 
 WE_TRANSFER_API_URL = "https://www.wetransfer.com/api/v1/transfers"
 DOWNLOAD_URL_PARAMS_PREFIX = "downloads/"
@@ -49,13 +49,10 @@ class WeTransfer(object):
 
     def _get_authenticity_token(self):
         resp = self.session.get("https://www.wetransfer.com/signin")
-        parser = etree.HTMLParser()
-        tree = etree.parse(StringIO(resp.text), parser)
-        root = tree.getroot()
-        for c in root.xpath("//input"):
-            if 'name' in c.attrib.keys():
-                if c.attrib["name"] == 'authenticity_token':
-                    self.authenticity_token = c.attrib["value"]
+
+        match = re.search(r'<meta content="(.*)" name="csrf-token" />', resp.text)
+        if match.group(1):
+            self.authenticity_token = match.group(1)
 
     def login(self):
         dataLogin = {

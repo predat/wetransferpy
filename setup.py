@@ -30,8 +30,7 @@ setup(
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
     install_requires=[
         "requests",
-        "requests_toolbelt",
-	"lxml"
+        "requests_toolbelt"
     ],
     scripts=['bin/wetransfer-upload','bin/wetransfer-download']
 )
