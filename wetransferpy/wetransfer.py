@@ -5,8 +5,9 @@ from __future__ import division
 import sys
 import os
 import json
-import mimetypes
 import collections
+import logging
+import time
 from urlparse import urlparse, parse_qs
 from StringIO import StringIO
 import requests
@@ -82,6 +83,11 @@ class WeTransfer(object):
         else:
             dataTransferId["ttype"] = "4"
         r = self.session.post(WE_TRANSFER_API_URL, data=dataTransferId)
+
+        while(r.status_code != 200):
+            time.sleep(2)
+            r = self.session.post(WE_TRANSFER_API_URL, data=dataTransferId)
+
         response_data = json.loads(r.content)
 
         try:
@@ -184,7 +190,9 @@ class WeTransfer(object):
 
     def uploadFile(self, fileToUpload):
         self.transfer_id = self._get_transfer_id()
+        logging.info("Transfer_id: %s" % self.transfer_id)
 
+        logging.debug("Upload file: %s" % fileToUpload) 
         with open(fileToUpload, 'rb') as f:
             fileMimeType = "application/octet-stream"
             fileSize = os.path.getsize(fileToUpload)
