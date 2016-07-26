@@ -30,7 +30,8 @@ class WeTransfer(object):
                  password=None,
                  channel='',
                  expire_in='',
-                 progress=True):
+                 progress=True, 
+                 deliverypassword=None):
 
         self.sender = sender
         self.receivers = receivers
@@ -40,7 +41,8 @@ class WeTransfer(object):
         self.channel = channel
         self.expire_in = expire_in
         self.progress = progress
-
+        self.deliverypassword = deliverypassword
+        
         self.session = requests.Session()
 
         if self.username and password:
@@ -72,7 +74,7 @@ class WeTransfer(object):
             "expire_in": self.expire_in,
             "from": self.sender,
             "message": self.message,
-            "pw": "",
+            "pw": self.deliverypassword,
             "to[]": self.receivers,
             "utype": "js"}
         if self.sender:
