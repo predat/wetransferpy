@@ -52,7 +52,7 @@ class WeTransfer(object):
     def _get_authenticity_token(self):
         resp = self.session.get("https://www.wetransfer.com/signin")
 
-        match = re.search(r'<meta content="(.*)" name="csrf-token" />', resp.text)
+        match = re.search(r'<meta name="csrf-token" content="(.*)" />', resp.text)
         if match.group(1):
             self.authenticity_token = match.group(1)
 
