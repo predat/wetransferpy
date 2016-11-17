@@ -14,6 +14,9 @@ from StringIO import StringIO
 import requests
 from requests_toolbelt import MultipartEncoder, MultipartEncoderMonitor
 
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 WE_TRANSFER_API_URL = "https://www.wetransfer.com/api/v1/transfers"
 DOWNLOAD_URL_PARAMS_PREFIX = "downloads/"
 CHUNK_SIZE_U = 5242880
