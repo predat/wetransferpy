@@ -18,6 +18,11 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 WETRANSFER_API_URL = "https://www.wetransfer.com/api/ui/transfers"
+WETRANSFER_LINK_URL = "{}/link".format(WETRANSFER_API_URL)
+WETRANSFER_EMAIL_URL = "{}/email".format(WETRANSFER_API_URL)
+WETRANSFER_TRANSFER_URL = "{api_url}/{transfer_id}/files"
+WETRANSFER_FILE_URL = "{api_url}/{transfer_id}/files/{file_id}"
+
 DOWNLOAD_URL_PARAMS_PREFIX = "downloads/"
 CHUNK_SIZE_U = 5242880
 CHUNK_SIZE_D = 1024
@@ -48,9 +53,9 @@ class WeTransfer(object):
 
         self.session = requests.Session()
 
-        if self.username and password:
-            self._get_authenticity_token()
-            self.login()
+        #if self.username and password:
+        #    self._get_authenticity_token()
+        #    self.login()
 
     def _get_authenticity_token(self):
         resp = self.session.get("https://www.wetransfer.com/signin")
