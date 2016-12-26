@@ -17,7 +17,7 @@ from requests_toolbelt import MultipartEncoder, MultipartEncoderMonitor
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-WE_TRANSFER_API_URL = "https://www.wetransfer.com/api/v1/transfers"
+WETRANSFER_API_URL = "https://www.wetransfer.com/api/ui/transfers"
 DOWNLOAD_URL_PARAMS_PREFIX = "downloads/"
 CHUNK_SIZE_U = 5242880
 CHUNK_SIZE_D = 1024
@@ -33,7 +33,7 @@ class WeTransfer(object):
                  password=None,
                  channel='',
                  expire_in='',
-                 progress=True, 
+                 progress=True,
                  deliverypassword=None):
 
         self.sender = sender
@@ -45,7 +45,7 @@ class WeTransfer(object):
         self.expire_in = expire_in
         self.progress = progress
         self.deliverypassword = deliverypassword
-        
+
         self.session = requests.Session()
 
         if self.username and password:
