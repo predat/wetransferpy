@@ -62,7 +62,7 @@ Anonymous upload:
 .. code-block:: python
 
     from wetransferpy import WeTransfer
-    wt = Wetransfer()
+    wt = WeTransfer()
     url = wt.uploadFile('thefile.mov')
     print url
 
